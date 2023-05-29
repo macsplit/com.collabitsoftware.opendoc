@@ -1,0 +1,25 @@
+{
+  "name": "com.collabitsoftware.opendoc",
+  "version": "1.0.4",
+  "description": "Open a document in an external program",
+  "cordova": {
+    "id": "com.collabitsoftware.opendoc",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "author": "Collabit Software Ltd",
+  "license": "BSD-3-Clause"
+}

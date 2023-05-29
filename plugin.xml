@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.collabitsoftware.opendoc"
+        version="1.0.4">
+
+  <name>Opendoc</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/opendoc.js" target="js/opendoc.js"/>
+
+  <js-module src="www/opendoc.js" name="Opendoc">
+    <clobbers target="Opendoc" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Opendoc">
+        <param name="android-package" value="com.collabitsoftware.plugin.Opendoc"/>
+      </feature>
+    </config-file>
+
+  <config-file target="AndroidManifest.xml" parent="/">
+    <permission
+        android:name="com.collabitsoftware.plugin.DocProvider/read"
+        android:protectionLevel="normal" />
+  </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="application">
+      <provider android:name="com.collabitsoftware.plugin.DocProvider"
+        android:authorities="${packageName}.opendoc"
+        android:exported="true"
+        android:grantUriPermissions="true"
+        android:readPermission="com.collabitsoftware.plugin.DocProvider/read">
+      </provider>
+    </config-file>
+
+    <source-file src="src/android/Opendoc.java" target-dir="src/com/collabitsoftware/plugin/"/>
+    <source-file src="src/android/DocProvider.java" target-dir="src/com/collabitsoftware/plugin/"/>
+    <source-file src="src/android/FileList.java" target-dir="src/com/collabitsoftware/plugin/"/>
+
+  </platform>
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/widget">
+      <feature name="Opendoc">
+        <param name="ios-package" value="Opendoc" />
+      </feature>
+    </config-file>
+
+    <config-file target="*-Info.plist" parent="LSSupportsOpeningDocumentsInPlace">
+      <true/>
+    </config-file>
+
+    <header-file src="src/ios/Opendoc.h" target-dir="OpendocPlugin"/>
+    <source-file src="src/ios/Opendoc.m" target-dir="OpendocPlugin"/>
+
+  </platform>
+
+</plugin>
